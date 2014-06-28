@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>
+Dictionary for the masses
+</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<!--<style type="text/css">
+div#box1{
+	position: absolute;
+	top:250px;
+	left:30%;
+
+	min-width:40%;
+	max-width: 62%;
+	min-height:90px;
+	max-height: 140px;
+	/*border: 1px solid black;*/
+	padding: 10px;
+	margin:0;
+
+
+}
+.title{
+	font-size:120%;
+}
+.lang{
+	text-transform: uppercase;
+	margin-left: 70px;
+
+}
+.para{
+	font-size:100%;
+	font-family: helvetica;
+	margin-left: 70px;
+
+}
+
+.button{
+	background-color:black;
+	color:white;
+	padding:3px;
+	border: 1px solid orange;
+}
+
+
+
+
+</style>-->
+</head>
+<body>
+	<form id="searchform" name="form1" action="index.php" method="POST">
+	<h1>LEXICON</h1>
+	<h6><i>online dictionary</i></h6><br/>
+	<input type="text" name="txt1" placeholder="Search here" size="30" maxlength="30"/>
+	<input type="submit" name="search" class="button" value="Search">
+	</form>
+	<!--<input id="submit" type="hidden" name="submitted" value="TRUE" />-->
+	<?php
+$con=mysql_connect("localhost","root","");
+mysql_select_db("dictionary",$con);
+
+if(isset($_POST['search']))
+{
+	$sq="%".mysql_real_escape_string($_POST['txt1']."%");
+	/*$q1=mysql_query("select * from list where  word like '$sq' ",$con);*/
+	$q1=mysql_query("SELECT * FROM words WHERE MATCH (word,lang) AGAINST('$sq')");
+
+	
+	while($q2=mysql_fetch_array($q1,MYSQL_ASSOC))
+	{
+		/*echo $q2["word"];
+		echo $q2["meang"];*
+		echo $q2["lang"];*/
+		echo '<div id="box1"><span class="title"> <i>' .'('. $q2['word_id'] .')<b>'. $q2['word'] . '</i></b><hr width="300px"></span>
+			<p class="para">' .$q2['meang'] . '</p><span class="lang">' . $q2['lang'] . '</span></div><br/>';
+	}
+	mysql_free_result($q1);
+
+}
+
+
+?>
+
+
+	
+	</p>
+	</form>
+	<ul class="nav">
+				<li><a href="index.php">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="enterwords.php" target="_blank">Enter words </a></li>
+				<li><a href="testwords.php" target="_blank">View words</a> </li>
+</ul>
+
+	
+	
+	
+</body>
+
+</html>

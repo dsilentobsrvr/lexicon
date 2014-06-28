@@ -1,0 +1,42 @@
+SELECT word,meang,lang FROM words WHERE MATCH(word,lang) AGAINST('$search');
+
+
+
+<?php
+		if(isset($_POST['submitted']))
+		{
+			require_once('connect_db.php');
+			$errors=array();
+
+	if(empty($_POST['search']))
+	{
+		$errors[]='Please enter the word to search';
+	}
+	else
+	{
+		$search=mysqli_real_escape_string($dbc,trim($_POST['search']));
+	}
+	if(empty($errors)){
+		$q="SELECT word,meang,lang FROM words WHERE MATCH(word,lang) AGAINST('$search');";
+		$r=@mysqli_query($dbc,$q);
+		if($r){
+			echo '<p> thank you</p>';
+}
+else {
+	echo '<h1>error</h1>';
+	echo '<p>'.mysqli_error($dbc).'<br/>query'.$q.'</p>';
+}
+mysqli_close($dbc);
+exit();
+}
+else{
+	echo '<h1> error</h1>';
+	foreach($errors as $msg){
+		echo "-$msg";
+		}
+		echo '<p>okease try again</p>';
+}
+mysqli_close($dbc);
+}
+
+?>

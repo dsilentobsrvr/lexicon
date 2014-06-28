@@ -1,0 +1,151 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width:99%;
+	height:100%;
+	
+	
+
+}
+#searchform{
+
+	position: absolute;
+	top:20%;
+	left:40%;
+}
+
+#wordenter{
+	position: absolute;
+	top:20%;
+	left:38%;
+
+}
+ h3{
+	font-family: helvetica;
+}
+
+.lbl{
+	font-family: helvetica;
+	font-size: 120%;
+	margin-left: 5px;
+}
+#wordenter input,textarea{
+font-size: 120%;
+color: #5a5854;
+background-color: #f2f2f2;
+border: 1px solid #bdbdbd;
+border-radius: 5px;
+padding: 5px;
+
+background-position: 8px 9px;
+display: block;
+margin-bottom: 10px;}
+
+#wordenter input:focus {
+background-color: #ffffff;
+border: 1px solid #b1e1e4;}
+
+ 
+#viewwords{
+	position: absolute;
+	top:10%;
+	left:10%;
+}
+
+#navigation{
+	position:fixed;
+	top:2%;
+	left:34%;
+	
+}
+
+
+.nav {
+	
+	margin:0;
+	padding:0;
+	list-style:inline;
+	/*width:100px;*/
+	margin-left: 37%;
+	width:100%;
+	
+	
+
+
+}
+
+.nav li {
+	float:left;
+	display:inline;
+
+
+	}
+
+.nav li a:visited,
+.nav li a:link {
+
+	background-color: white;
+	width:100%;
+
+	color: rgb(49,52,61);
+	padding: 0.5em;
+	display: block;
+	text-decoration: none;
+	border-bottom: 1px solid #ccc;
+	
+}
+
+.nav li a:hover {
+	color: rgb(125,102,130);
+	background-color:white;
+}
+
+#error{
+	position: absolute;
+	top:22%;
+	left:18%;
+	font: helvetica;
+	font-size:120%;
+	color:#cc3333;
+	background-color:#ffcccc;
+	padding:8px;
+}
+.thanku{
+	position: absolute;
+	top:10%;
+	left:35%;
+	color:#ffffff;
+	background-color:#33cc99;
+	padding:5px;
+}
+#container{
+	position:absolute;
+	width:60%;
+	top:20%;
+	left:20%;
+	text-align: justify;
+	font-family:helvetica;
+
+
+}
+.up{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.lex{
+	font-weight: bold;
+	font-size:150%;
+
+}
+
+.button{
+	background-color:black;
+	color:white;
+	padding:2px;
+	border: 1px solid orange;
+	width:90px;
+	height:30px;
+	border-radius: 5px;
+}
